@@ -13,6 +13,7 @@
 		"unreleased": "git-cliff --unreleased -o CHANGELOG.md"
 	},
 	"dependencies": {
+		"@astrojs/cloudflare": "^12.6.12",
 		"@astrojs/solid-js": "^5.1.3",
 		"astro": "^5.16.7",
 		"git-cliff": "^2.11.0",
