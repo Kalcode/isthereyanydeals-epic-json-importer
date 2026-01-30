@@ -66,29 +66,31 @@ export function ProfileSetup(props: Props) {
 					<p class="success-text">Profile linked successfully!</p>
 				</div>
 
-				<div class="setup-step">
-					<h3>2. Configure Collection Category</h3>
+				<div class="setup-step warning">
+					<h3>2. Configure Collection Category (Required)</h3>
+					<p class="warning-text">
+						<strong>Warning:</strong> Before syncing, you MUST configure the linked profile in your
+						ITAD settings. The sync will replace ALL games in the selected category with your pasted
+						list. Games not in your list will be removed from that category.
+					</p>
 					<p class="help-text">
-						Now, open your ITAD profile settings to configure which collection category the
-						imported games should go to:
+						Open your ITAD profile settings and look for "Epic Games JSON Importer". Select the
+						category where you want your Epic games synced:
 					</p>
 					<a
 						href="https://isthereanydeal.com/settings/profiles/"
 						target="_blank"
 						rel="noopener"
-						class="btn btn-secondary"
+						class="btn btn-warning"
 					>
 						Open ITAD Profile Settings ↗
 					</a>
-					<p class="help-text" style={{ 'margin-top': '0.5rem' }}>
-						Look for "Epic Games JSON Importer" and select your preferred category.
-					</p>
 				</div>
 
 				<div class="setup-step">
 					<h3>3. Ready to Sync</h3>
 					<p class="help-text">
-						When you've configured your category (or want to use the default), click below to sync{' '}
+						Once you've configured your category, click below to sync{' '}
 						<strong>{props.games.length}</strong> games to your collection.
 					</p>
 				</div>

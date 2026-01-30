@@ -1,5 +1,5 @@
-import { createSignal, Show, onMount } from 'solid-js';
-import type { MatchedGame } from './GameMatcher';
+import { createSignal, Show, onMount } from "solid-js";
+import type { MatchedGame } from "./GameMatcher";
 
 interface SyncResponse {
 	total: number;
@@ -32,21 +32,21 @@ export function SyncResult(props: Props) {
 				title: g.epicTitle,
 			}));
 
-			const res = await fetch('/api/sync/games', {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
+			const res = await fetch("/api/sync/games", {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ games }),
 			});
 
 			if (!res.ok) {
 				const data = await res.json();
-				throw new Error(data.error || 'Sync failed');
+				throw new Error(data.error || "Sync failed");
 			}
 
 			const data: SyncResponse = await res.json();
 			setResult(data);
 		} catch (err) {
-			setError(err instanceof Error ? err.message : 'Failed to sync games');
+			setError(err instanceof Error ? err.message : "Failed to sync games");
 		} finally {
 			setLoading(false);
 		}
@@ -57,7 +57,7 @@ export function SyncResult(props: Props) {
 			<Show when={loading()}>
 				<div class="loading-state">
 					<h2>Syncing Games...</h2>
-					<p>Adding {props.games.length} games to your ITAD collection...</p>
+					<p>Syncing {props.games.length} games to your ITAD collection...</p>
 				</div>
 			</Show>
 
@@ -66,22 +66,39 @@ export function SyncResult(props: Props) {
 					<h2>Sync Complete!</h2>
 					<div class="sync-stats">
 						<div class="stat">
-							<span class="stat-value">{result()!.added}</span>
+							<span class="stat-value stat-added">{result()!.added}</span>
 							<span class="stat-label">Added</span>
+						</div>
+						<div class="stat">
+							<span class="stat-value stat-removed">{result()!.removed}</span>
+							<span class="stat-label">Removed</span>
 						</div>
 						<div class="stat">
 							<span class="stat-value">{result()!.total}</span>
 							<span class="stat-label">Total</span>
 						</div>
 					</div>
+
+					<Show when={result()!.removed > 0}>
+						<p class="warning-text">
+							Note: {result()!.removed} game(s) were removed because they
+							weren't in your pasted list. Make sure to include your complete
+							Epic Games order history each time you sync.
+						</p>
+					</Show>
+
 					<p class="help-text">
-						You can view and organize your collection at{' '}
-						<a href="https://isthereanydeal.com/collection/" target="_blank" rel="noopener">
+						You can view and organize your collection at{" "}
+						<a
+							href="https://isthereanydeal.com/collection/"
+							target="_blank"
+							rel="noopener"
+						>
 							isthereanydeal.com/collection
 						</a>
 					</p>
 					<button type="button" class="btn btn-primary" onClick={props.onReset}>
-						Import More Games
+						Return Home
 					</button>
 				</div>
 			</Show>
@@ -91,7 +108,11 @@ export function SyncResult(props: Props) {
 					<h2>Sync Failed</h2>
 					<p class="error">{error()}</p>
 					<div class="actions">
-						<button type="button" class="btn btn-secondary" onClick={props.onReset}>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							onClick={props.onReset}
+						>
 							Start Over
 						</button>
 						<button type="button" class="btn btn-primary" onClick={syncGames}>
