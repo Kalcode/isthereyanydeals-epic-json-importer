@@ -180,6 +180,11 @@ textarea:focus {
 	margin-top: 0;
 }
 
+.json-input h3 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
 .json-input textarea {
 	margin-bottom: 1rem;
 }
@@ -187,6 +192,60 @@ textarea:focus {
 .input-actions {
 	display: flex;
 	gap: 0.5rem;
+}
+
+/* Script Section */
+.script-section {
+	background-color: #f8f9fa;
+	border: 1px solid #ddd;
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.script-section h3 {
+	margin-top: 0;
+	margin-bottom: 0.75rem;
+}
+
+.instructions {
+	margin: 0 0 1rem 0;
+	padding-left: 1.5rem;
+}
+
+.instructions li {
+	margin-bottom: 0.5rem;
+}
+
+.console-screenshot {
+	display: block;
+	max-width: 100%;
+	margin-top: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: var(--border-radius);
+}
+
+.script-box {
+	position: relative;
+	background-color: #2d2d2d;
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	overflow-x: auto;
+}
+
+.script-box pre {
+	margin: 0;
+	color: #f8f8f2;
+	font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+	font-size: 0.8rem;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.script-box .copy-btn {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
 }
 
 /* Game Matcher */
