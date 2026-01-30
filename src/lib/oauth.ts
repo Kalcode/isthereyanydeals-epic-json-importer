@@ -2,11 +2,11 @@
  * ITAD OAuth configuration and helpers
  */
 
-export const ITAD_AUTH_URL = 'https://isthereanydeal.com/oauth/authorize/';
-export const ITAD_TOKEN_URL = 'https://isthereanydeal.com/oauth/token/';
-export const ITAD_API_BASE = 'https://api.isthereanydeal.com';
+export const ITAD_AUTH_URL = "https://isthereanydeal.com/oauth/authorize/";
+export const ITAD_TOKEN_URL = "https://isthereanydeal.com/oauth/token/";
+export const ITAD_API_BASE = "https://api.isthereanydeal.com";
 
-export const OAUTH_SCOPES = ['coll_read', 'coll_write'];
+export const OAUTH_SCOPES = ["coll_read", "coll_write", "profiles"];
 
 export interface TokenResponse {
 	access_token: string;
@@ -23,8 +23,8 @@ export function getStateCookieOptions(isProduction: boolean) {
 	return {
 		httpOnly: true,
 		secure: isProduction,
-		sameSite: 'lax' as const,
-		path: '/',
+		sameSite: "lax" as const,
+		path: "/",
 		maxAge: 60 * 10, // 10 minutes
 	};
 }
@@ -36,8 +36,8 @@ export function getTokenCookieOptions(isProduction: boolean, maxAge: number) {
 	return {
 		httpOnly: true,
 		secure: isProduction,
-		sameSite: 'lax' as const,
-		path: '/',
+		sameSite: "lax" as const,
+		path: "/",
 		maxAge,
 	};
 }
@@ -52,13 +52,13 @@ export function buildAuthorizationUrl(params: {
 	codeChallenge: string;
 }): string {
 	const url = new URL(ITAD_AUTH_URL);
-	url.searchParams.set('client_id', params.clientId);
-	url.searchParams.set('redirect_uri', params.redirectUri);
-	url.searchParams.set('response_type', 'code');
-	url.searchParams.set('scope', OAUTH_SCOPES.join(' '));
-	url.searchParams.set('state', params.state);
-	url.searchParams.set('code_challenge', params.codeChallenge);
-	url.searchParams.set('code_challenge_method', 'S256');
+	url.searchParams.set("client_id", params.clientId);
+	url.searchParams.set("redirect_uri", params.redirectUri);
+	url.searchParams.set("response_type", "code");
+	url.searchParams.set("scope", OAUTH_SCOPES.join(" "));
+	url.searchParams.set("state", params.state);
+	url.searchParams.set("code_challenge", params.codeChallenge);
+	url.searchParams.set("code_challenge_method", "S256");
 	return url.toString();
 }
 
@@ -73,7 +73,7 @@ export async function exchangeCodeForTokens(params: {
 	redirectUri: string;
 }): Promise<TokenResponse> {
 	const body = new URLSearchParams({
-		grant_type: 'authorization_code',
+		grant_type: "authorization_code",
 		code: params.code,
 		redirect_uri: params.redirectUri,
 		client_id: params.clientId,
@@ -82,9 +82,9 @@ export async function exchangeCodeForTokens(params: {
 	});
 
 	const response = await fetch(ITAD_TOKEN_URL, {
-		method: 'POST',
+		method: "POST",
 		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
+			"Content-Type": "application/x-www-form-urlencoded",
 		},
 		body: body.toString(),
 	});

@@ -2,11 +2,11 @@ import { createSignal, Show, onMount } from 'solid-js';
 import { AuthButton } from './AuthButton';
 import { JsonInput } from './JsonInput';
 import { GameMatcher, type MatchedGame } from './GameMatcher';
-import { ImportConfirm } from './ImportConfirm';
-import { ImportResult } from './ImportResult';
+import { ProfileSetup } from './ProfileSetup';
+import { SyncResult } from './SyncResult';
 import type { ParsedGame } from '../lib/epicParser';
 
-type Step = 'input' | 'match' | 'confirm' | 'result';
+type Step = 'input' | 'match' | 'setup' | 'result';
 
 export function App() {
 	const [authenticated, setAuthenticated] = createSignal<boolean | null>(null);
@@ -42,10 +42,10 @@ export function App() {
 
 	const handleMatched = (matches: MatchedGame[]) => {
 		setMatchedGames(matches);
-		setStep('confirm');
+		setStep('setup');
 	};
 
-	const handleImport = () => {
+	const handleSync = () => {
 		setStep('result');
 	};
 
@@ -98,16 +98,16 @@ export function App() {
 						/>
 					</Show>
 
-					<Show when={step() === 'confirm'}>
-						<ImportConfirm
+					<Show when={step() === 'setup'}>
+						<ProfileSetup
 							games={matchedGames()}
-							onImport={handleImport}
+							onSync={handleSync}
 							onBack={() => setStep('match')}
 						/>
 					</Show>
 
 					<Show when={step() === 'result'}>
-						<ImportResult games={matchedGames()} onReset={handleReset} />
+						<SyncResult games={matchedGames()} onReset={handleReset} />
 					</Show>
 				</Show>
 			</main>

@@ -175,6 +175,11 @@ textarea:focus {
 	margin-bottom: 1rem;
 }
 
+.input-actions {
+	display: flex;
+	gap: 0.5rem;
+}
+
 /* Game Matcher */
 .game-matcher h2 {
 	margin-top: 0;
@@ -328,15 +333,63 @@ textarea:focus {
 	margin-top: 0.5rem;
 }
 
-/* Import Confirm */
-.import-confirm h2 {
+/* Profile Setup */
+.profile-setup h2 {
 	margin-top: 0;
 }
 
-/* Import Result */
-.import-result {
+.setup-step {
+	padding: 1.5rem;
+	margin-bottom: 1rem;
+	border: 1px solid #ddd;
+	border-radius: var(--border-radius);
+	background-color: #fff;
+}
+
+.setup-step.completed {
+	border-color: var(--success-color);
+	background-color: #d4edda;
+}
+
+.setup-step h3 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+.success-text {
+	color: var(--success-color);
+	font-weight: 500;
+}
+
+/* Sync Result */
+.sync-result {
 	text-align: center;
 	padding: 2rem;
+}
+
+.sync-stats {
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+	margin: 2rem 0;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.stat-value {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: var(--primary-color);
+}
+
+.stat-label {
+	font-size: 0.875rem;
+	color: var(--secondary-color);
+	text-transform: uppercase;
 }
 
 .success-state h2 {
@@ -345,6 +398,10 @@ textarea:focus {
 
 .error-state h2 {
 	color: var(--error-color);
+}
+
+.loading-state {
+	padding: 2rem;
 }
 
 /* Actions */

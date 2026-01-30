@@ -3,6 +3,7 @@ import type { ParsedGame } from '../lib/epicParser';
 
 export interface MatchedGame {
 	epicTitle: string;
+	epicOfferId: string;
 	itadId: string | null;
 	itadTitle: string | null;
 	selected: boolean;
@@ -48,6 +49,7 @@ export function GameMatcher(props: Props) {
 				const itadId = lookupResult[game.epicOfferId];
 				return {
 					epicTitle: game.title,
+					epicOfferId: game.epicOfferId,
 					itadId: itadId || null,
 					itadTitle: itadId ? game.title : null, // Use Epic title since we have exact match
 					selected: itadId !== null,
