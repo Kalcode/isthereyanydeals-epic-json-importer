@@ -9,8 +9,8 @@
 		"preview:wrangler": "wrangler dev",
 		"preview": "astro build && wrangler dev",
 		"deploy": "astro build && wrangler deploy",
-		"release": "git-cliff --bump -o CHANGELOG.md",
-		"unreleased": "git-cliff --unreleased -o CHANGELOG.md"
+		"release": "bun --bun git-cliff --bump -o CHANGELOG.md",
+		"unreleased": "bun --bun git-cliff --unreleased -o CHANGELOG.md"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^12.6.12",
