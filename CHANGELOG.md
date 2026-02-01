@@ -1,7 +1,7 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-## [0.0.1] - 2026-01-31
+## [0.0.1] - 2026-02-01
 
 
 ### 🚀 Features
@@ -12,3 +12,15 @@ All notable changes to this project will be documented in this file.
 - Add delete count and warn about it
 - Get wrangler preview working
 - Better instructions to get game list
+- Update domain to the latest and greatest!
+- Group matched and unmatched games in review step
+
+
+### 🎨 Styling
+
+- Apply dark navy theme with polished UI
+
+
+### 🔧 Chores
+
+- Bump release
