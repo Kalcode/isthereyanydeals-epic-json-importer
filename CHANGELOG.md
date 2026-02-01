@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Better instructions to get game list
 - Update domain to the latest and greatest!
 - Group matched and unmatched games in review step
+- Add second lookup
 
 
 ### 🎨 Styling
