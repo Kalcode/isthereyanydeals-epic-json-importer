@@ -29,12 +29,13 @@ export function GameMatcher(props: Props) {
 		setError(null);
 
 		try {
-			// Use Epic offer IDs for exact matching via ITAD shop lookup
+			// Use Epic offer IDs for exact matching, with title fallback
 			const offerIds = props.games.map((g) => g.epicOfferId);
+			const titles = props.games.map((g) => g.title);
 			const res = await fetch('/api/games/lookup', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ offerIds }),
+				body: JSON.stringify({ offerIds, titles }),
 			});
 
 			if (!res.ok) {
