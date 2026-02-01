@@ -333,6 +333,40 @@ textarea::placeholder {
 	color: var(--text-heading);
 }
 
+.game-section {
+	margin-bottom: 1.5rem;
+}
+
+.section-header {
+	margin: 0 0 0.5rem 0;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.9rem;
+	font-weight: 600;
+	border-radius: var(--border-radius);
+}
+
+.section-unmatched {
+	background-color: var(--error-bg);
+	color: var(--error-color);
+	border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.section-matched {
+	background-color: var(--success-bg);
+	color: var(--success-color);
+	border: 1px solid rgba(92, 184, 92, 0.3);
+}
+
+.section-hint {
+	color: var(--text-muted);
+	font-size: 0.85rem;
+	margin: 0 0 0.75rem 0;
+}
+
+.game-list-unmatched {
+	margin-bottom: 0;
+}
+
 .match-summary {
 	display: flex;
 	justify-content: space-between;

@@ -88,7 +88,19 @@ export function GameMatcher(props: Props) {
 	};
 
 	const matchedCount = () => matches().filter((m) => m.itadId !== null).length;
+	const unmatchedCount = () => matches().filter((m) => m.itadId === null).length;
 	const selectedCount = () => matches().filter((m) => m.selected).length;
+
+	// Separate matched and unmatched games
+	const unmatchedGames = () => matches().filter((m) => m.itadId === null);
+	const matchedGames = () => matches().filter((m) => m.itadId !== null);
+
+	// Get original index for toggle function
+	const getOriginalIndex = (game: MatchedGame) => {
+		return matches().findIndex(
+			(m) => m.epicOfferId === game.epicOfferId
+		);
+	};
 
 	return (
 		<div class="game-matcher">
@@ -118,33 +130,58 @@ export function GameMatcher(props: Props) {
 					</div>
 				</div>
 
-				<div class="game-list">
-					<For each={matches()}>
-						{(match, index) => (
-							<div
-								class={`game-item ${match.itadId ? 'matched' : 'unmatched'} ${match.selected ? 'selected' : ''}`}
-							>
-								<label>
-									<input
-										type="checkbox"
-										checked={match.selected}
-										disabled={!match.itadId}
-										onChange={() => toggleGame(index())}
-									/>
-									<div class="game-info">
-										<span class="epic-title">{match.epicTitle}</span>
-										<Show when={match.itadId}>
-											<span class="itad-title">→ {match.itadTitle}</span>
-										</Show>
-										<Show when={!match.itadId}>
-											<span class="no-match">Not found in ITAD</span>
-										</Show>
+				{/* Unmatched games section */}
+				<Show when={unmatchedCount() > 0}>
+					<div class="game-section">
+						<h3 class="section-header section-unmatched">
+							Not Found ({unmatchedCount()})
+						</h3>
+						<p class="section-hint">
+							These games weren't found in ITAD. You can go back to edit your JSON if needed.
+						</p>
+						<div class="game-list game-list-unmatched">
+							<For each={unmatchedGames()}>
+								{(match) => (
+									<div class="game-item unmatched">
+										<div class="game-info">
+											<span class="epic-title">{match.epicTitle}</span>
+										</div>
 									</div>
-								</label>
-							</div>
-						)}
-					</For>
-				</div>
+								)}
+							</For>
+						</div>
+					</div>
+				</Show>
+
+				{/* Matched games section */}
+				<Show when={matchedCount() > 0}>
+					<div class="game-section">
+						<h3 class="section-header section-matched">
+							Found ({matchedCount()})
+						</h3>
+						<div class="game-list">
+							<For each={matchedGames()}>
+								{(match) => (
+									<div
+										class={`game-item matched ${match.selected ? 'selected' : ''}`}
+									>
+										<label>
+											<input
+												type="checkbox"
+												checked={match.selected}
+												onChange={() => toggleGame(getOriginalIndex(match))}
+											/>
+											<div class="game-info">
+												<span class="epic-title">{match.epicTitle}</span>
+												<span class="itad-title">→ {match.itadTitle}</span>
+											</div>
+										</label>
+									</div>
+								)}
+							</For>
+						</div>
+					</div>
+				</Show>
 
 				<div class="actions">
 					<button type="button" class="btn btn-secondary" onClick={props.onBack}>
