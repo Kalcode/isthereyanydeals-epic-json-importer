@@ -10,7 +10,7 @@
 	},
 	"routes": [
 		{
-			"pattern": "isthereyanydeals-epic-json-importer.clausens.cloud",
+			"pattern": "isthereyanydeals-epic-json-importer.junk-tools.com",
 			"custom_domain": true
 		}
 	]
