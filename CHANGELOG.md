@@ -1,7 +1,7 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-## [0.0.1] - 2026-02-01
+## [0.0.1] - 2026-02-04
 
 
 ### 🚀 Features
@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Update domain to the latest and greatest!
 - Group matched and unmatched games in review step
 - Add second lookup
+- Add disclaimer, switch to github
 
 
 ### 🎨 Styling
