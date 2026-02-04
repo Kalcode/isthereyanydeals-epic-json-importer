@@ -1,7 +1,4 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
-## [0.0.1] - 2026-02-04
+## [Unreleased]
 
 
 ### 🚀 Features
@@ -16,6 +13,12 @@ All notable changes to this project will be documented in this file.
 - Group matched and unmatched games in review step
 - Add second lookup
 - Add disclaimer, switch to github
+- Use gh action to bump changelog it
+
+
+### 🐛 Bug Fixes
+
+- Workflow failing to bump
 
 
 ### 🎨 Styling
