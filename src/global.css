@@ -261,6 +261,39 @@ textarea::placeholder {
 	gap: 0.75rem;
 }
 
+/* Security Warning */
+.security-warning {
+	background-color: rgba(255, 107, 107, 0.1);
+	border: 2px solid var(--error-color);
+	border-radius: var(--border-radius-lg);
+	padding: 1.25rem;
+	margin-bottom: 1.5rem;
+}
+
+.security-warning h3 {
+	margin: 0 0 0.75rem 0;
+	color: var(--error-color);
+	font-size: 1.1rem;
+}
+
+.security-warning p {
+	margin: 0 0 0.75rem 0;
+	color: var(--text-color);
+	line-height: 1.6;
+}
+
+.security-warning p:last-child {
+	margin-bottom: 0;
+}
+
+.security-warning a {
+	color: var(--link-color);
+}
+
+.security-warning a:hover {
+	text-decoration: underline;
+}
+
 /* Script Section */
 .script-section {
 	background-color: var(--background-card);

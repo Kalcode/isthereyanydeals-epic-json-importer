@@ -90,6 +90,27 @@ export function JsonInput(props: Props) {
 		<div class="json-input">
 			<h2>Step 1: Get Your Epic Games Orders</h2>
 
+			<div class="security-warning">
+				<h3>⚠️ Security Warning</h3>
+				<p>
+					<strong>Never paste code into your browser console unless you understand what it does and trust the source.</strong>
+				</p>
+				<p>
+					Code running in your console executes with your full account privileges — it can access your cookies, session tokens, and perform actions as you. Malicious scripts could steal your account credentials or make unwanted purchases.
+				</p>
+				<p>
+					The script below only fetches your order history from Epic's API and outputs it as JSON. You can{" "}
+					<a
+						href="https://github.com/kalcode/isthereyanydeals-epic-json-importer/blob/main/src/components/JsonInput.tsx"
+						target="_blank"
+						rel="noopener"
+					>
+						review the source code
+					</a>{" "}
+					to verify this yourself. If you don't understand code or don't trust this tool, don't proceed.
+				</p>
+			</div>
+
 			<div class="script-section">
 				<h3>How to get your order history:</h3>
 				<ol class="instructions">

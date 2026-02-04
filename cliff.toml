@@ -1,11 +1,10 @@
 # git-cliff ~ configuration file
 # https://git-cliff.org/docs/configuration
 
-[remote.gitea]
+[remote.github]
 owner = "kalcode"
 repo = "isthereyanydeals-epic-json-importer"
-api_url = "https://code.clausens.cloud"
-token = ""  # Use GITEA_TOKEN env var instead
+token = ""  # Use GITHUB_TOKEN env var instead
 
 [changelog]
 header = """

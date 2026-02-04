@@ -36,17 +36,17 @@ bun deploy           # Build + deploy to Cloudflare Workers
 
 ## Pull Requests
 
-**Gitea API**: This repo uses self-hosted Forgejo (Gitea). Create PRs via API using `GITEA_TOKEN` from `.env`:
+Use the GitHub CLI (`gh`) for PR operations:
 
 ```bash
-# Using the helper script
-./scripts/create-pr.sh "PR Title" "PR Body" [base] [head]
+# Create a PR
+gh pr create --title "PR Title" --body "PR Body"
 
-# Direct API call
-curl -X POST "https://code.clausens.cloud/api/v1/repos/kalcode/isthereyanydeals-epic-json-importer/pulls" \
-  -H "Authorization: token $GITEA_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"title": "...", "body": "...", "head": "feature-branch", "base": "main"}'
+# View PR status
+gh pr status
+
+# Check out a PR locally
+gh pr checkout 123
 ```
 
 ## Architecture
