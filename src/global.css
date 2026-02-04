@@ -224,19 +224,82 @@ textarea::placeholder {
 	margin-bottom: 1rem;
 }
 
-/* Not Authenticated */
-.not-authenticated {
-	text-align: center;
-	padding: 4rem 2rem;
+/* Intro Section */
+.intro-section {
+	padding: 2rem;
 	background: var(--background-card);
 	border-radius: var(--border-radius-lg);
 	border: 1px solid var(--border-color);
 }
 
-.not-authenticated p {
-	margin-bottom: 1.5rem;
+.intro-section h2 {
+	margin-top: 0;
+	margin-bottom: 1rem;
+	color: var(--text-heading);
+}
+
+.intro-section h3 {
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+	color: var(--text-heading);
 	font-size: 1.1rem;
+}
+
+.intro-section p {
 	color: var(--text-muted);
+	line-height: 1.6;
+	margin-bottom: 1rem;
+}
+
+.intro-section a {
+	color: var(--link-color);
+}
+
+.process-steps {
+	margin: 0 0 1.5rem 0;
+	padding-left: 1.5rem;
+	color: var(--text-muted);
+	line-height: 1.7;
+}
+
+.process-steps li {
+	margin-bottom: 0.75rem;
+}
+
+.process-steps strong {
+	color: var(--text-color);
+}
+
+.disclosure-box {
+	background-color: var(--warning-bg);
+	border: 1px solid rgba(240, 173, 78, 0.4);
+	border-radius: var(--border-radius);
+	padding: 1rem 1.25rem;
+	margin: 1.5rem 0;
+}
+
+.disclosure-box h4 {
+	margin: 0 0 0.5rem 0;
+	color: var(--warning-color);
+	font-size: 1rem;
+}
+
+.disclosure-box p {
+	margin: 0;
+	color: var(--text-color);
+	font-size: 0.95rem;
+}
+
+.login-prompt {
+	text-align: center;
+	margin-top: 2rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border-color);
+}
+
+.login-prompt p {
+	margin-bottom: 1rem;
+	color: var(--text-color);
 }
 
 /* JSON Input */

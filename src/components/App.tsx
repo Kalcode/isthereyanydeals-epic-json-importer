@@ -77,11 +77,57 @@ export function App() {
 				</Show>
 
 				<Show when={authenticated() === false}>
-					<div class="not-authenticated">
-						<p>Please login with IsThereAnyDeal to import your Epic Games library.</p>
-						<a href="/api/auth/login" class="btn btn-primary">
-							Login with IsThereAnyDeal
-						</a>
+					<div class="intro-section">
+						<h2>What is this?</h2>
+						<p>
+							This tool helps you import your Epic Games library into your{" "}
+							<a href="https://isthereanydeal.com" target="_blank" rel="noopener">IsThereAnyDeal</a>{" "}
+							collection. ITAD doesn't have direct Epic Games integration, so this tool bridges that gap.
+						</p>
+
+						<h3>How it works</h3>
+						<ol class="process-steps">
+							<li>
+								<strong>Retrieve your Epic orders</strong> — You'll need to get your order history from Epic Games.
+								We provide a script you can run in your browser's console while logged into Epic, or you can
+								retrieve the JSON manually via their API.
+							</li>
+							<li>
+								<strong>Paste the JSON here</strong> — The tool parses your orders and extracts game titles.
+							</li>
+							<li>
+								<strong>Match games to ITAD</strong> — We search ITAD's database to find matching entries
+								for your games.
+							</li>
+							<li>
+								<strong>Import to your collection</strong> — Select which ITAD collection to add them to
+								(requires logging in with your ITAD account).
+							</li>
+						</ol>
+
+						<div class="disclosure-box">
+							<h4>⚠️ Important disclosure</h4>
+							<p>
+								This tool requires you to run a script in your browser console to fetch your Epic orders.
+								<strong>Never run scripts you don't understand or trust.</strong> The script only reads your
+								order history — it cannot make purchases or modify your account. You can{" "}
+								<a
+									href="https://github.com/kalcode/isthereyanydeals-epic-json-importer"
+									target="_blank"
+									rel="noopener"
+								>
+									review the full source code
+								</a>{" "}
+								on GitHub.
+							</p>
+						</div>
+
+						<div class="login-prompt">
+							<p>Ready to get started? Login with your IsThereAnyDeal account:</p>
+							<a href="/api/auth/login" class="btn btn-primary">
+								Login with IsThereAnyDeal
+							</a>
+						</div>
 					</div>
 				</Show>
 
