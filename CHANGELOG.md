@@ -26,3 +26,4 @@ All notable changes to this project will be documented in this file.
 ### 🔧 Chores
 
 - Bump release
+- Bump version
