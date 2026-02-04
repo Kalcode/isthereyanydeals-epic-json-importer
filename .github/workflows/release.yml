@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run (no tag/release created)'
+        description: "Dry run (no tag/release created)"
         required: false
         default: false
         type: boolean
@@ -22,12 +22,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install git-cliff
+        uses: taiki-e/install-action@git-cliff
+
       - name: Get next version
         id: version
-        uses: orhun/git-cliff-action@v4
-        with:
-          config: cliff.toml
-          args: --bumped-version
+        run: |
+          VERSION=$(git-cliff --bumped-version)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Next version: $VERSION"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -39,23 +42,19 @@ jobs:
           args: --verbose --tag ${{ steps.version.outputs.version }}
         env:
           OUTPUT: CHANGELOG.md
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_CLIFF_TOKEN }}
 
       - name: Generate release notes
         id: release-notes
-        uses: orhun/git-cliff-action@v4
-        with:
-          config: cliff.toml
-          args: --verbose --latest --strip header
+        run: |
+          NOTES=$(git-cliff --latest --strip header)
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "Release notes:"
+          echo "$NOTES"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Show version and changelog
-        run: |
-          echo "Next version: ${{ steps.version.outputs.version }}"
-          echo "---"
-          echo "Release notes:"
-          echo "${{ steps.release-notes.outputs.content }}"
 
       - name: Commit changelog
         if: ${{ !inputs.dry_run }}
